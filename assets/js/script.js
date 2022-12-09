@@ -5,7 +5,9 @@
 $(function () {
   let curDateEl = $("#currentDay");
   let saveBtnEl = $(".saveBtn");
-  let descriptionEl = $(".description");
+  let container = $(".container-lg");
+
+  let now = dayjs();
   
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -14,6 +16,7 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   saveBtnEl.click(save);
+  applyClasses();
   
   //
   // TODO: Add code to apply the past, present, or future class to each time
@@ -29,12 +32,39 @@ $(function () {
   displayTime();
 
   function displayTime() {
-    let now = dayjs().format('MMM DD, YYYY [at] hh:mm:ss a');
-    curDateEl.text(now);
+    let nowText = now.format('MMM DD, YYYY [at] hh:mm:ss a');
+    curDateEl.text(nowText);
   }
 
   function save(){
-    let here = $(this).siblings("textArea").val();
-    console.log(here);
+    let input = $(this).siblings("textArea").val();
+    let id = $(this).parent().attr("id");
+
+    localStorage.setItem(id, input);
+    
   }
+
+  function applyClasses(){
+    let offset = 9;
+    let hour = now.hour();  //16
+
+    container.children().each(function(){
+      if(offset < hour){
+        $(this).removeClass("present");
+        $(this).removeClass("future");
+        $(this).addClass("past")
+      }else if(offset == hour){
+        $(this).removeClass("past");
+        $(this).removeClass("future");
+        $(this).addClass("present")
+      }else{
+        $(this).removeClass("past");
+        $(this).removeClass("present");
+        $(this).addClass("future")
+      }
+      offset++;
+      console.log(offset + " hour is " + hour);
+    });
+  }
+
 });
