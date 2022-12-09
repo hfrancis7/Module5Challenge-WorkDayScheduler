@@ -34,6 +34,7 @@ $(function () {
   }
 
   function save(){
-    let parent = $(this).parent();
+    let here = $(this).siblings("textArea").val();
+    console.log(here);
   }
 });
