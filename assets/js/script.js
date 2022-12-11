@@ -2,35 +2,38 @@ $(function () {
   let curDateEl = $("#currentDay");
   let saveBtnEl = $(".saveBtn");
   let container = $(".container-lg");
-
-  saveBtnEl.click(save);
-
   let now = dayjs();
-  applyClasses();
-  displayTime();
+  
+  saveBtnEl.click(save);
+  
+  load();
 
 setInterval(function(){
     now = dayjs();
     applyClasses();
     displayTime();
   }, 1000);
-
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
   
   function displayTime() {
     let nowText = now.format('MMM DD, YYYY [at] hh:mm:ss a');
     curDateEl.text(nowText);
   }
 
-  function save(){
-    let input = $(this).siblings("textArea").val();
-    let id = $(this).parent().attr("id");
+  function load(){
+      applyClasses();
+      displayTime();
+      Object.keys(localStorage).forEach((key) => {
+        let keyStr = "#" + key;
+        let item = localStorage.getItem(key);
+        $(keyStr).children("textarea").val(item);
+      })
 
+  }
+
+  function save(){
+    let input = $(this).siblings("textarea").val();
+    let id = $(this).parent().attr("id");
     localStorage.setItem(id, input);
-    
   }
 
   function applyClasses(){
