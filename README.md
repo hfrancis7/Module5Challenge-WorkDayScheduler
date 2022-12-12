@@ -19,8 +19,8 @@ https://hfrancis7.github.io/Module5Challenge-WorkDayScheduler/
 N/A
 
 ## Usage
-The user can enter in corresponding text and then click the save button so that it remains saved even upon website refresh.
-[Screenshot Here]
+The user can enter in corresponding text and then click the save button so that it remains saved even upon website refresh. <br>
+![Screenshot of scheduler with 10AM in red, 9AM in gray, other times in green. 9AM says "wake up", 10am says "eat breakfast" 11AM says "code"](./assets/screenshots/workdayScheduler.jpg "Workday Scheduler")
 
 
 ## User Story
