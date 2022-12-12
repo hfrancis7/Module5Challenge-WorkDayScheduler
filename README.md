@@ -4,6 +4,11 @@ This is a Workday Scheduler that allows a user to write and save events that are
 This challenge involved added functionality to existing code so that this scheduler could save and load information for each hour of the scheduler to and from local storage. <br>
 
 ## Description
+The user can enter text in any of the text boxes to indicate an event at a time of day. <br>
+
+The gray boxes represent the past, the red box represents the present, and the green boxes represent the future. This is dependent on the current hour of the day. <br>
+
+The events are saved in local storage and will displayed in their respective text boxes even when the page refreshes. <br>
 
 
 
@@ -14,7 +19,8 @@ https://hfrancis7.github.io/Module5Challenge-WorkDayScheduler/
 N/A
 
 ## Usage
-TBA
+The user can enter in corresponding text and then click the save button so that it remains saved even upon website refresh.
+[Screenshot Here]
 
 
 ## User Story
